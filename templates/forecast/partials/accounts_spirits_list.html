@@ -4,6 +4,8 @@
 
 <h2>Spirits forecast for {{account.name}}</h2>
 <table class='table mt-3 mb-5'>
+{% if forecast_items %}
+
   <thead>
       <tr>
           <th>Category</th>
@@ -15,7 +17,7 @@
       </tr>
   </thead>
 
-{% if forecast_items %}
+
 
 <tbody>
     {% for item in forecast_items  %}
@@ -40,13 +42,9 @@
 
     {% else %}
 
-    <td>None</td>
-    <td>None</td>
-    <td>None</td>
-    <td>None</td>
-    <td>None</td>
-    <td>None</td>
-</tbody>
+    <tbody>
+        <h2 class='text-center'>None selected</h2>
+    </tbody>
 
 {% endif %}
 </table>
