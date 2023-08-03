@@ -131,6 +131,7 @@ def account_detail_view(request, name):
 
     return render(request, 'forecast/account_detail.html', context)
 
+#View used in cobination with HTMX to delete a selected spirit from an account.
 @login_required
 def delete_item(request, item, account):
     to_delete = VolumeItem.objects.get(pk=item)
@@ -145,6 +146,58 @@ def delete_item(request, item, account):
 
     # return template fragment with all the user's films
     return render(request, 'forecast/partials/accounts_spirits_list.html', context)
+
+#view used to add spirits one by one
+@login_required
+def add_spirit_view(request):
+
+    if request.method== 'POST':
+        form = SpiritForm(request.POST)
+
+        print(request.POST)
+
+        if form.is_valid():
+            form.save()
+            return redirect('forecast:home')
+        else:
+            form = SpiritForm
+
+    form = SpiritForm
+
+    context = {
+        'form' : form
+    }
+
+    return render(request,'forecast/CRUD.html', context)
+
+#View used to add new accounts one by one
+@login_required
+def add_account_view(request):
+
+    if request.method== 'POST':
+        form = AccountForm(request.POST)
+
+        print(request.POST)
+
+        if form.is_valid():
+            form.save()
+            return redirect('forecast:home')
+        else:
+            form = AccountForm
+
+    form = AccountForm
+
+    context = {
+        'form' : form
+    }
+
+    return render(request,'forecast/CRUD.html', context)
+
+
+
+
+
+
 
 
 
@@ -254,7 +307,9 @@ def import_spirits_view(request):
             return HttpResponse(f'Error importing CSV file: {str(e)}')
     else:
         return render(request, 'forecast/import_csv.html', {'name':'Spirits'})
-    
+
+
+#Not used.
 @login_required
 def testview(request):
     if request.method== 'POST':
@@ -274,3 +329,4 @@ def testview(request):
     }
 
     return render(request, 'forecast/test.html', context)
+

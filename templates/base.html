@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Barstock</title>
+    <title>BartStock</title>
 
 <!--CSS-->
     <!--BOOTSTRAP-->
@@ -28,6 +28,15 @@
           <div class="navbar-nav">
             <a class="nav-item nav-link" href="{% url 'forecast:home' %}">Dashboard</a>
             <a class="nav-item nav-link" href="{% url 'forecast:accounts' %}">Accounts</a>
+            <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Add
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <a class="dropdown-item" href="{% url 'forecast:add_spirit' %}">Add spirit</a>
+              <a class="dropdown-item" href="{% url 'forecast:add_account' %}">Add account</a>
+            </div>
+            </li>
             <a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a>
           </div>
         </div>

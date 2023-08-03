@@ -28,7 +28,8 @@ class VolumeForm(forms.ModelForm):
                                 Column('end_date'),
                             ),
                             Row(
-                                Submit('submit', 'Add', css_class='my-3 btn btn-secondary')
+                                Submit('submit', 'Add', css_class='my-3 btn btn-secondary w-50'),
+                                css_class='d-flex justify-content-center'
                             )
             )
         )
@@ -38,3 +39,42 @@ class SpiritForm(forms.ModelForm):
     class Meta:
         model = Spirit
         fields =('name','category')
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.layout = Layout(
+                        Div(
+                            Row(
+                                Column('name', css_class='form-group col-md-6'),
+                                Column('category', css_class='form-group col-md-6'),
+                            ),
+                            Row(
+                                Submit('submit', 'Add', css_class='my-3 btn btn-secondary w-50'),
+                                css_class='d-flex justify-content-center'
+                            )
+            )
+        )
+
+
+class AccountForm(forms.ModelForm):
+    class Meta:
+        model = Account
+        fields = '__all__'
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.layout = Layout(
+                        Div(
+                            Row(
+                                Column('name', css_class='form-group col-md-6'),
+                                css_class='d-flex justify-content-center'
+
+                            ),
+                            Row(
+                                Submit('submit', 'Add', css_class='my-3 btn btn-secondary w-50'),
+                                css_class='d-flex justify-content-center'
+                            )
+            )
+        )

@@ -1,4 +1,6 @@
 //Select2
+
+//Style the select-2 input with Bootstrap.
 $(document).ready(function() {
     $('#accounts_dropdown').select2({ 
         theme:'bootstrap-5'   
@@ -13,5 +15,6 @@ $(document).ready(function() {
         theme:'bootstrap-5'   
         });
 
-
-    
+    $('#id_category').select2({ 
+        theme:'bootstrap-5'   
+        });
