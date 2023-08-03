@@ -57,7 +57,7 @@ def accounts_by_spirit_view(request, spirit):
     for item in items:
         account_name = item.account
         current_month_total = VolumeItem.objects.filter(account=account_name, start_date__lt=next_month,spirit__name=spirit, amount__isnull=False).aggregate(Sum('amount'))['amount__sum']
-        next_month_total= VolumeItem.objects.filter(account=account_name, start_date__gte=next_month,spirit__name=spirit, amount__isnull=False).aggregate(Sum('amount'))['amount__sum']
+        next_month_total= VolumeItem.objects.filter(account=account_name, start_date__lte=next_month,spirit__name=spirit, amount__isnull=False).aggregate(Sum('amount'))['amount__sum']
         account_totals.append({'account_name' : account_name, 'current_month_total' : current_month_total, 'next_month_total' : next_month_total})
 
 
