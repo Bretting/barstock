@@ -26,8 +26,8 @@ from accounts.views import (
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('forecast.urls')),
-    path('sign-in',login_view),
-    path('sign-out',logout_view),
+    path('sign-in',login_view, name='login'),
+    path('sign-out',logout_view, name='logout'),
 ]
 
 if settings.DEBUG:

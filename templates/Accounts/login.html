@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class='container account d-flex justify-content-center'>
+    {% if not request.user.is_authenticated %}
+    <div class='my-5 w-25 '>
+        <form method='POST'>
+            {% csrf_token %}
+            {% if error %}
+            <p style='color:red'>{{ error }}</p>
+            {% endif %}
+            <div class='form-group my-3'>
+                <input type='text' name='username' placeholder='username' class='form-control'>
+            </div>
+            <div class='form-group my-3'>
+                <input type='password' name='password' placeholder='password' class='form-control'>
+            </div>
+            <input type="hidden" name="next" value="{{ request.GET.next }}">
+            <button type='submit' class='btn btn-secondary'>Login</button>
+        </form>
+
+        {% else %}
+        <p class='my-5'>You're already logged in. Would you like to <a href="/sign-out">logout?</a></p>
+        {% endif %}
+
+    </div>
+
+
+</div>
+{% endblock content %}
+
