@@ -1,5 +1,5 @@
 from django.db import models
-from django.db.models import Sum
+from django.template.defaultfilters import slugify
 from django.urls import reverse
 
 # Create your models here.
