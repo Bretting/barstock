@@ -1,0 +1,13 @@
+
+<div class='my5'>
+
+    <h2>Are you sure you want to delete {{spirit}}?</h2>
+
+
+    <form method='POST' enctype='multipart/form-data'>
+        {% csrf_token %}
+        <input type="hidden" name="delete" value="{{ id }}">
+        <input class='btn btn-danger mx-2' type="submit" value='Yes, delete'>     
+    </form>
+
+</div>

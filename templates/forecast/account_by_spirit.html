@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+    <div class='container'>
+
+
+        <h1>{{spirit}}</h1>
+
+
+        <table class='table'>
+            <thead>
+                <tr>
+                    <th>Account</th>
+                    <th>Monthly Amount</th>
+                    <th>Next Month</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for item in account_totals %}
+                <tr>
+                    <td><a href="{% url 'forecast:account_detail' item.account_name %}">{{ item.account_name }}</a></td>
+                    <td>{{ item.current_month_total }}</td>
+                    <td>{{ item.next_month_total }}</td>
+                </tr>
+
+            {% endfor %}
+            </tbody>
+        </table>
+
+
+    </div>
+
+{% endblock content %}

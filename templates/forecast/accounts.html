@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+    <div class='container'>
+
+        <h2>Find account</h2>
+
+        <div class="input-group my-3">
+            <div class="input-group-prepend">
+              <label class="input-group-text" for="inputGroupSelect01">Accounts</label>
+            </div>
+            <select class="custom-select" id="accounts_dropdown">
+                <option value="" disabled selected>Select account</option>
+                {% for account in accounts  %}
+                    <a href="{{account.get_absolute_url}}"><option value="{{account.get_absolute_url}}">{{account.name}}</option></a>
+                {% endfor %}
+
+            </select>
+
+    </div>
+
+
+{% endblock content %}

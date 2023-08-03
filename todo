@@ -1,0 +1,51 @@
+Plan for the app:
+
+
+- Accounts list 
+    - List needs to be searchable (select2?)
+    - List needs to be selectable to detailview
+    
+    - Account detailview:
+        - List of spirits on menu -> Add a monthly forecast volume
+        - Add end date for the forecasted volume
+        - Add warning to user when end date is near
+
+- Spirits list
+    - List needs to be searchable (select2?)
+    - List needs to be selectable for a detailview
+
+    - Spirits detailview:
+        - Overview of accounts listing the spirits and their forecasted volume
+        - End date for each venue forecasted volume
+
+    - Overview list of total forecasted items and their total volume
+
+
+
+    TODO Future plans:
+
+    - Add visuals to forecasted volumes per month/year/week etc
+
+
+
+
+MODEL:
+
+- Accounts
+    - Name -> External DB/Charfield
+    DYNAMICALLY ADDED
+    - Spirits -> ForeignKey
+    - Forecasted Volume
+
+- Spirits
+    - Name -> External DB/Charfield
+
+
+
+
+TODO:
+
+- Dashboard overview:
+    - Sum of all spirits and the forecasted volume of each account
+    - Link to detailview of specific spirits
+    

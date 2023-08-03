@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+
+<div class='container'>
+
+    <h1>Import {{name}} CSV File</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="file" name="csv_file" accept=".csv">
+        <input type="submit" value="Import">
+    </form>
+
+</div>
+
+
+
+{% endblock content %}
