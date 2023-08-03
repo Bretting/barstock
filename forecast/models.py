@@ -1,5 +1,5 @@
 from django.db import models
-from django.template.defaultfilters import slugify
+from django.db.models import Sum
 from django.urls import reverse
 
 # Create your models here.
@@ -26,7 +26,7 @@ class Account(models.Model):
        return self.name
     
     def get_absolute_url(self):
-        return reverse("forecast:account_detail", kwargs={"id": self.pk})
+        return reverse("forecast:account_detail", kwargs={"name": self.name})
 
 
 class VolumeItem(models.Model):
