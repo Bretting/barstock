@@ -1,4 +1,6 @@
 /venv
 .env
 
+todo
+
 __pycache__/
