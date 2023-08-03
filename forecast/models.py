@@ -13,6 +13,8 @@ class Category(models.Model):
 
 
 class Spirit(models.Model):
+    #The Bartsbottles item# from the database. This will be used to read items from their DB and compare current stock vs forecasted use.
+    item_nr = models.CharField(max_length=10)
     #The spirit or product name
     name = models.CharField(max_length=255)
     #Linked to the category model. This will be used to display the category an item belongs on a template.
