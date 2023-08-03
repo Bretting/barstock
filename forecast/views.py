@@ -1,4 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.db.models import Sum
 from .models import *
@@ -7,6 +8,7 @@ from datetime import date
 import csv
 
 # Create your views here.
+@login_required
 def dashboard_view(request):
 
     current_month = date.today()
@@ -39,6 +41,7 @@ def dashboard_view(request):
 
 
 #Create an overview of all accounts that carry a certain spirit:
+@login_required
 def accounts_by_spirit_view(request, spirit):
     
     current_month = date.today()
@@ -67,6 +70,7 @@ def accounts_by_spirit_view(request, spirit):
 
 
 #create an overview of all accounts in Db and make them searchable
+@login_required
 def account_view(request):
     context = {
         'accounts' : Account.objects.all()
@@ -76,6 +80,7 @@ def account_view(request):
 
 
 # Show all spirits forecasted by a selected account and their dates.
+@login_required
 def account_detail_view(request, name):
     account = get_object_or_404(Account, name=name)
     forecast_items = VolumeItem.objects.filter(account=account.id)
@@ -120,7 +125,7 @@ def account_detail_view(request, name):
 
     return render(request, 'forecast/account_detail.html', context)
 
-
+@login_required
 def delete_item(request, item, account):
     to_delete = VolumeItem.objects.get(pk=item)
     print(account)
@@ -140,6 +145,7 @@ def delete_item(request, item, account):
 
 #Import .csv for spirits, categories and accounts:
 
+@login_required
 def import_accounts_view(request):
     if request.method == 'POST' and request.FILES['csv_file']:
         csv_file = request.FILES['csv_file']
@@ -166,7 +172,8 @@ def import_accounts_view(request):
             return HttpResponse(f'Error importing CSV file: {str(e)}')
     else:
         return render(request, 'forecast/import_csv.html', {'name':'Accounts'})
-    
+
+@login_required    
 def import_categories_view(request):
     if request.method == 'POST' and request.FILES['csv_file']:
         csv_file = request.FILES['csv_file']
@@ -194,7 +201,7 @@ def import_categories_view(request):
     else:
         return render(request, 'forecast/import_csv.html',{'name':'Categories'})
     
-
+@login_required
 def import_spirits_view(request):
     if request.method == 'POST' and request.FILES['csv_file']:
         csv_file = request.FILES['csv_file']
@@ -242,7 +249,7 @@ def import_spirits_view(request):
     else:
         return render(request, 'forecast/import_csv.html', {'name':'Spirits'})
     
-
+@login_required
 def testview(request):
     if request.method== 'POST':
         form = SpiritForm(request.POST)
