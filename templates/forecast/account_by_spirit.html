@@ -14,8 +14,9 @@
             <thead>
                 <tr>
                     <th>Account</th>
-                    <th>Monthly Amount</th>
+                    <th>This Month</th>
                     <th>Next Month</th>
+                    <th>Month After</th>
                 </tr>
             </thead>
             <tbody>
@@ -24,6 +25,7 @@
                     <td><a href="{% url 'forecast:account_detail' item.account_name %}">{{ item.account_name }}</a></td>
                     <td>{{ item.current_month_total }}</td>
                     <td>{{ item.next_month_total }}</td>
+                    <td>{{ item.month_after_total }}</td>
                 </tr>
 
             {% endfor %}

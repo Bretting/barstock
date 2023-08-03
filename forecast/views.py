@@ -15,6 +15,7 @@ def dashboard_view(request):
     current_month = current_month.replace(day=1)
     # Calculate the first day of the next month
     next_month = current_month.replace(month=current_month.month % 12 + 1, day=1)
+    month_after = current_month.replace(month=current_month.month % 12 + 2, day=1)
 
     # Use the annotate() method along with Sum() to calculate the sum of amount for each unique spirit
     # Use F expressions to check if amount is not None
@@ -28,9 +29,10 @@ def dashboard_view(request):
         #Calculate total amount for this month and for next month.
         current_month_total_amount = spirit.volumeitem_set.filter(start_date__lt=next_month).aggregate(Sum('amount'))['amount__sum'] or 0
         next_month_total_amount = spirit.volumeitem_set.filter(end_date__gte=next_month).aggregate(Sum('amount'))['amount__sum'] or 0
+        month_after_amount =spirit.volumeitem_set.filter(end_date__gte=month_after).aggregate(Sum('amount'))['amount__sum'] or 0
 
         #Create one itterable item to use in template.
-        spirit_totals.append({'spirit_name': spirit_name,'spirit_category': spirit_category, 'total_amount': current_month_total_amount, 'next_month_total_amount' : next_month_total_amount})
+        spirit_totals.append({'spirit_name': spirit_name,'spirit_category': spirit_category, 'total_amount': current_month_total_amount, 'next_month_total_amount' : next_month_total_amount, 'month_after_total_amount' : month_after_amount})
 
         context = {
             'spirit_totals' : spirit_totals
@@ -48,6 +50,7 @@ def accounts_by_spirit_view(request, spirit):
     current_month = current_month.replace(day=1)
     # Calculate the first day of the next month
     next_month = current_month.replace(month=current_month.month % 12 + 1, day=1)
+    month_after = current_month.replace(month=current_month.month % 12 + 2, day=1)
 
     #create a list of all accounts that have a record for the selected spirit
     items = VolumeItem.objects.filter(spirit__name=spirit)
@@ -58,7 +61,10 @@ def accounts_by_spirit_view(request, spirit):
         account_name = item.account
         current_month_total = VolumeItem.objects.filter(account=account_name, start_date__lt=next_month,spirit__name=spirit, amount__isnull=False).aggregate(Sum('amount'))['amount__sum']
         next_month_total= VolumeItem.objects.filter(account=account_name, start_date__lte=next_month,spirit__name=spirit, amount__isnull=False).aggregate(Sum('amount'))['amount__sum']
-        account_totals.append({'account_name' : account_name, 'current_month_total' : current_month_total, 'next_month_total' : next_month_total})
+        month_after_total= VolumeItem.objects.filter(account=account_name, end_date__gte=month_after,spirit__name=spirit, amount__isnull=False).aggregate(Sum('amount'))['amount__sum']
+
+
+        account_totals.append({'account_name' : account_name, 'current_month_total' : current_month_total, 'next_month_total' : next_month_total, 'month_after_total' : month_after_total})
 
 
     context = {
