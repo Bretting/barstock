@@ -26,7 +26,7 @@ class Account(models.Model):
        return self.name
     
     def get_absolute_url(self):
-        return reverse("forecast:account_detail", kwargs={"name": self.name})
+        return reverse("forecast:account_detail", kwargs={"id": self.pk})
 
 
 class VolumeItem(models.Model):

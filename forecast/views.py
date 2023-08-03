@@ -81,8 +81,8 @@ def account_view(request):
 
 # Show all spirits forecasted by a selected account and their dates.
 @login_required
-def account_detail_view(request, name):
-    account = get_object_or_404(Account, name=name)
+def account_detail_view(request, id):
+    account = get_object_or_404(Account, id=id)
     forecast_items = VolumeItem.objects.filter(account=account.id)
     accountnr = account.pk
 
