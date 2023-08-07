@@ -5,10 +5,9 @@ from .views import (
     dashboard_view,
     account_view,
     account_detail_view,
-    accounts_by_spirit_view,
-    add_spirit_view,
+    accounts_by_product_view,
+    add_product_view,
     add_account_view,
-
 
     #HTMX views
     delete_item,
@@ -16,20 +15,20 @@ from .views import (
     #backend views
     import_accounts_view,
     import_categories_view,
-    import_spirits_view,
+    import_product_view,
 )
 
-
 app_name = 'forecast'
+
 urlpatterns = [
     #main views
     path('', dashboard_view, name='home'),
     path('Accounts',account_view, name='accounts'),
     path('Accounts/<str:name>', account_detail_view, name='account_detail'),
-    path('Spirits/<str:spirit>', accounts_by_spirit_view, name='account_by_spirit'),
+    path('Products/<str:product>', accounts_by_product_view, name='account_by_product'),
 
     #Add items
-    path('Add/Spirit', add_spirit_view, name='add_spirit'),
+    path('Add/Product', add_product_view, name='add_product'),
     path('Add/Account', add_account_view, name='add_account'),
 
 
@@ -39,5 +38,5 @@ urlpatterns = [
     #Backend views
     path('Admin/import-accounts', import_accounts_view, name='import_accounts'),
     path('Admin/import-categories', import_categories_view, name='import_categories'),
-    path('Admin/import-spirits', import_spirits_view, name='import_spirits'),
+    path('Admin/import-product', import_product_view, name='import_product'),
 ]

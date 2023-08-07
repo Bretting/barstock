@@ -12,7 +12,7 @@ class VolumeForm(forms.ModelForm):
 
     class Meta:
         model = VolumeItem
-        fields = ('spirit','amount', 'start_date', 'end_date')
+        fields = ('product','amount', 'start_date', 'end_date')
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -20,7 +20,7 @@ class VolumeForm(forms.ModelForm):
         self.helper.layout = Layout(
                         Div(
                             Row(
-                                Column('spirit', css_class='form-group col-md-6'),
+                                Column('product', css_class='form-group col-md-6'),
                                 Column('amount', css_class='form-group col-md-6'),
                             ),
                             Row(
@@ -35,9 +35,9 @@ class VolumeForm(forms.ModelForm):
         )
 
 
-class SpiritForm(forms.ModelForm):
+class ProductForm(forms.ModelForm):
     class Meta:
-        model = Spirit
+        model = Product
         fields =('name','category')
 
     def __init__(self, *args, **kwargs):

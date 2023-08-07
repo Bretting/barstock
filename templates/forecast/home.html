@@ -9,17 +9,17 @@
     <thead>
         <tr>
             <th>Category</th>
-            <th>Spirit</th>
+            <th>Product</th>
             <th>This Month</th>
             <th>Next Month</th>
             <th>Month After</th>
         </tr>
     </thead>
     <tbody>
-        {% for item in spirit_totals  %}
+        {% for item in product_totals  %}
         <tr>
-            <td>{{item.spirit_category}}</td>
-            <td><a href="{% url 'forecast:account_by_spirit' spirit=item.spirit_name %}">{{item.spirit_name}}</a></td>
+            <td>{{item.product_category}}</td>
+            <td><a href="{% url 'forecast:account_by_product' product=item.product_name %}">{{item.product_name}}</a></td>
             <td>{{item.total_amount}}</td>
             <td>{{item.next_month_total_amount}}</td>
             <td>{{item.month_after_total_amount}}</td>

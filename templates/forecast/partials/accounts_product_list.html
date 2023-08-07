@@ -9,7 +9,7 @@
   <thead>
       <tr>
           <th>Category</th>
-          <th>Spirit</th>
+          <th>Product</th>
           <th>Amount</th>
           <th>Start Date</th>
           <th>End Date</th>
@@ -23,7 +23,7 @@
     {% for item in forecast_items  %}
     <tr>
         <td>{{item.category}}</td>
-        <td>{{item.spirit}}</td>
+        <td>{{item.product}}</td>
         <td>{{item.amount}}</td>
         <td>{{item.start_date}}</td>
         <td>{{item.end_date}}</td>
@@ -32,7 +32,7 @@
             style="cursor: pointer;"
             hx-delete="{% url 'forecast:delete-item' item.pk accountnr %}"
             hx-target="#item_list"
-            hx-confirm="Are you sure you wish to delete {{item.spirit}} from {{account.name}}?">
+            hx-confirm="Are you sure you wish to delete {{item.product}} from {{account.name}}?">
             X</span>
         </td>
 

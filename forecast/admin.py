@@ -6,11 +6,11 @@ from .models import *
 class AccountAdmin(admin.ModelAdmin):
     search_fields = ['name']
 
-class SpiritAdmin(admin.ModelAdmin):
+class ProductAdmin(admin.ModelAdmin):
     search_fields = ['name']
 
 
-admin.site.register(Spirit, SpiritAdmin)
+admin.site.register(Product, ProductAdmin)
 admin.site.register(Account, AccountAdmin)
 admin.site.register(VolumeItem)
 admin.site.register(Category)
