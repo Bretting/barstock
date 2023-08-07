@@ -11,7 +11,7 @@ $(document).ready(function() {
         open(e.params.data.id,'_self');
     });
 
-    $('#id_spirit').select2({ 
+    $('#id_product').select2({ 
         theme:'bootstrap-5'   
         });
 
