@@ -4,7 +4,7 @@ from django.http import HttpResponse
 from django.db.models import Sum
 from .models import *
 from .forms import *
-from datetime import date
+from datetime import datetime, date
 import csv
 
 #Helper functions:
@@ -12,8 +12,12 @@ import csv
 def current_month_calc():
     return date.today().replace(day=1)
 
-def later_month_calc(month, offset):
-    return month.replace(month=month.month % 12 + offset, day=1)
+#args are the current month and a given offset. The offset be used to get a date with the current month + the offset amount in months.
+def later_month_calc(current_month, offset):
+    target_month = (current_month.month + offset - 1) % 12 + 1
+    target_year = current_month.year + (current_month.month + offset - 1) // 12
+
+    return datetime(year=target_year, month=target_month, day=1)
 
 
 

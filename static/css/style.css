@@ -1,3 +1,40 @@
 .test {
     border: 1px solid red
 }
+
+.htmx-indicator{
+    height: 40px;
+    width: 40px;
+    opacity:0;
+    transition: opacity 1s ease-in;
+
+}
+.htmx-request .htmx-indicator{
+    opacity:1;
+}
+
+.table-hover:hover{
+    --bs-table-hover-color: white;
+    --bs-table-hover-bg: black;
+}
+
+a {
+    color: inherit !important;
+}
+
+.red {
+    background-color: red!important;
+}
+
+.accordion-button:not(.collapsed) {
+    background-color: transparent!important;
+    color: black!important;
+}
+
+.accordion-button:focus {
+    border-color: transparent!important;
+}
+
+th {
+    cursor: pointer;
+}

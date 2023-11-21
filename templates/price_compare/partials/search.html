@@ -1,0 +1,131 @@
+
+{% load static %}
+<div class="accordion accordion-flush" id="searchAccordion">
+    <div class='my-5 accordion-item'>
+        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+            <h1 class="accordion-header my-1" id="headingOne">Right Spirits</h1>
+        </button>
+    {% if right_spirits == 'Not found' %}
+        <h1>Product not found with Right Spirits</h1>
+
+    {% else %}
+        <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#searchAccordion">
+            <div class="accordion-body">
+                <div class='filter'>
+                    <input type="text" placeholder='filter' name='filter' class='form-control my-2' id='right_spirits_filter' onkeyup='RightSpiritsFilter()'>
+                </div>
+                <table class='table table-striped table-hover' id='right_spirits'>
+                    <thead>
+                        <th onclick='sortRightSpirits(0)'><b>Product</b></th>
+                        <th onclick='sortRightSpirits(1)'><b>Price incl. Excise</b></th>
+                        <th onclick='sortRightSpirits(2)'><b>Size</b></th>
+                        <th onclick='sortRightSpirits(3)'><b>ABV</b></th>
+                        <th onclick='sortRightSpirits(4)'><b>In Stock</b></th>
+                    </thead>
+
+                    <tbody>
+                        {% for item in right_spirits  %}
+                            <tr>
+                                <td><a href={{item.link}}>{{item.product}}</a></td>
+                                <td>{{item.price}}</td>
+                                <td>{{item.size}}</td>
+                                <td>{{item.abv}}</td>
+                                {% if item.instock == 'Not in stock' %}
+                                    <td class='red'>{{item.instock}}</td>
+                                {% else %}
+                                    <td>{{item.instock}}</td>
+                                {% endif %}
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    {% endif %}
+    </div>
+
+    <div class='my-5 accordion-item'>
+        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+            <h1 class="accordion-header my-1" id="headingTwo">Anker</h1>
+        </button>
+    {% if anker == 'Not found' %}
+        <h1>Product not found with Anker</h1>
+
+    {% else %}
+        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#searchAccordion">
+            <div class="accordion-body">
+                <div class='filter'>
+                    <input type="text" placeholder='filter' name='filter' class='form-control my-2' id='anker_filter' onkeyup='AnkerFilter()'>
+                </div>
+                <table class='table table-striped table-hover' id='anker'>
+                    <thead>
+                        <th onclick='sortAnker(0)'><b>Product</b></th>
+                        <th onclick='sortAnker(1)'><b>Price incl. Excise</b></th>
+                        <th onclick='sortAnker(2)'><b>Size</b></th>
+                        <th onclick='sortAnker(3)'><b>ABV</b></th>
+                        <th onclick='sortAnker(4)'><b>In Stock</b></th>
+                    </thead>
+
+                    <tbody>
+                        {% for item in anker  %}
+                            <tr>
+                                <td><a href={{item.link}}>{{item.product}}</a></td>
+                                <td>{{item.price}}</td>
+                                <td>{{item.size}}</td>
+                                <td>{{item.abv}}</td>
+                                {% if item.instock == 'Not in stock' %}
+                                    <td class='red'>{{item.instock}}</td>
+                                {% else %}
+                                    <td>{{item.instock}}</td>
+                                {% endif %}
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    {% endif %}
+    </div>
+
+    <div class='my-5 accordion-item'>
+        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+            <h1 class="accordion-header my-1" id="headingThree">Henk Smit</h1>
+        </button>
+    {% if henk_smit == 'Not found' %}
+        <h1>Product not found with Henk Smit</h1>
+
+    {% else %}
+        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#searchAccordion">
+            <div class="accordion-body">
+                <div class='filter'>
+                    <input type="text" placeholder='filter' name='filter' class='form-control my-2' id='henk_smit_filter' onkeyup='HenkSmitFilter()'>
+                </div>
+                <table class='table table-striped table-hover' id='henk_smit'>
+                    <thead>
+                        <th onclick='sortHenkSmit(0)'><b>Product</b></th>
+                        <th onclick='sortHenkSmit(1)'><b>Price incl. Excise</b></th>
+                        <th onclick='sortHenkSmit(2)'><b>Size</b></th>
+                        <th onclick='sortHenkSmit(3)'><b>ABV</b></th>
+                        <th onclick='sortHenkSmit(4)'><b>In Stock</b></th>
+                    </thead>
+
+                    <tbody>
+                        {% for item in henk_smit  %}
+                            <tr>
+                                <td><a href={{item.link}}>{{item.product}}</a></td>
+                                <td>{{item.price}}</td>
+                                <td>{{item.size}}</td>
+                                <td>{{item.abv}}</td>
+                                {% if item.instock == 'Not in stock' %}
+                                    <td class='red'>{{item.instock}}</td>
+                                {% else %}
+                                    <td>{{item.instock}}</td>
+                                {% endif %}
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    {% endif %}
+    </div>

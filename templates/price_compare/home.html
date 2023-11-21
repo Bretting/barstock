@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block content %}
+
+<div class='container'>
+    {% csrf_token %}
+
+    <h1>Price Compare</h1>
+
+    <div class='my-5'>
+    <form   hx-post="{% url 'price_compare:search' %}" 
+            hx-trigger='submit' 
+            hx-target='#search'
+            hx-swap='outerhtml'
+            hx-indicator='#loading'>
+
+            <input type="text" placeholder='Search' name='search' class='form-control my-2'>
+            <button type='submit' class='my-2 btn btn-secondary'>Search</button>
+            <img src="{% static "media/loading.svg" %}" alt="loading" id='loading' class='htmx-indicator'>
+    </form>
+    </div>
+
+    <div id='search'>
+        <h2>search results</h2>
+    </div>
+
+</div>
+
+
+{% endblock content %}

@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     #Apps
     'forecast',
     'accounts',
+    'price_compare',
 
 
     #3rd party apps:
