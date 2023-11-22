@@ -1,0 +1,6 @@
+<button type='submit' class='btn btn-secondary mx-1' id='tracker_button'
+                                            hx-post="{% url 'price_compare:add_tracker' %}"
+                                            hx-trigger='submit'  
+                                            hx-target='#tracker_button'
+                                            hx-indicator='#tracker_loading'      
+                                    >Track</button>

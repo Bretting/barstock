@@ -158,7 +158,6 @@ def delete_item(request, item, account):
         'accountnr' : account
     }
 
-    # return template fragment with all the user's films
     return render(request, 'forecast/partials/accounts_product_list.html', context)
 
 #view used to add products one by one
@@ -206,10 +205,6 @@ def add_account_view(request):
     }
 
     return render(request,'forecast/CRUD.html', context)
-
-
-
-
 
 
 

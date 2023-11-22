@@ -39,12 +39,12 @@ def search_products(query):
             size = soup.find('span', {'dusk': 'contents'}).text.strip().split()
             abv = soup.find('span', {'dusk': 'alcohol_percentage'}).text.strip().split()
             link = soup.find('a').get('href')
+            print(link)
+            link_slug = link.removeprefix('https://rightspirits.com/')
             image_link = soup.find('img').get('src')
             image = f"https://www.rightspirits.com{image_link}"
 
-            right_spirits.append(
-                {'product': product, 'price': price[1], 'size': size[1], 'abv': abv[1], 'image': image, 'link': link, })
-            #  'instock':instock}
+            right_spirits.append({'product': product, 'price': price[1], 'size': size[1], 'abv': abv[1], 'image': image, 'link': link_slug })
 
         for item in right_spirits:
             try:

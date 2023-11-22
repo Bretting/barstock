@@ -25,7 +25,7 @@ from accounts.views import (
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',include('forecast.urls')),
+    path('forecast/',include('forecast.urls')),
     path('price_compare/', include('price_compare.urls')),
     path('sign-in',login_view, name='login'),
     path('sign-out',logout_view, name='logout'),

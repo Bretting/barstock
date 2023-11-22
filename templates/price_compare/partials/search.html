@@ -21,6 +21,7 @@
                         <th onclick='sortRightSpirits(2)'><b>Size</b></th>
                         <th onclick='sortRightSpirits(3)'><b>ABV</b></th>
                         <th onclick='sortRightSpirits(4)'><b>In Stock</b></th>
+                        <th></th>
                     </thead>
 
                     <tbody>
@@ -35,6 +36,16 @@
                                 {% else %}
                                     <td>{{item.instock}}</td>
                                 {% endif %}
+                                <td>
+                                    <form
+                                            hx-post="{% url 'price_compare:add_tracker' name=item.product supplier='Right Spirits' price=item.price link=item.link%}"
+                                            hx-trigger='submit'  
+                                            hx-indicator='#tracker_loading' >
+                                        {% csrf_token %}
+                                    <button type='submit' class='btn btn-secondary mx-1' id='tracker_button'>Track</button>
+                                    <img src="{% static "media/loading.svg" %}" alt="tracker_loading" id='tracker_loading' class='htmx-indicator'>
+                                    </form>
+                                </td>
                             </tr>
                         {% endfor %}
                     </tbody>
